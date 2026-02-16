@@ -80,3 +80,27 @@ int main() {
     printf("|---------------|---------|------------|--------------|----------------|\n");
     return 0;
 }
+
+
+#Comentários sobre o código
+#Ao se analisar os resultados, percebe-se que os algoritimos possuem complexidade de tempo quadrático O(n^2)
+#ao se evidenciar o número significativo de comparações ao se aumentar o tamanho do vetor, o bubble sort realizou um
+#número muito maior de movimentações, pois efetua diversas trocas durante a ordenação.
+#O selection sort apresentou um melhor desempenho ao comparar o número de coperações, realizando no máximo uma troca por iteração externa
+#a operação *movimentacoes+=3 pega o valor atual de movimentações, soma 3 e guarda de volta, porque um swap(troca) tem 3 atribuições. 
+
+
+#| Algoritmo     | Tamanho | Tempo (ms) | Comparacoes  | Movimentacoes  |
+#|---------------|---------|------------|--------------|----------------|
+#| Bubble Sort   | 100     | 0.000      | 4950         | 14850        |
+#|---------------|---------|------------|--------------|----------------|
+#| Selection Sort | 100     | 0.000      | 4950         | 297          |
+#|---------------|---------|------------|--------------|----------------|
+#| Bubble Sort   | 1000    | 7.000      | 499500       | 1498500      |
+#|---------------|---------|------------|--------------|----------------|
+#| Selection Sort | 1000    | 3.000      | 499500       | 2997         |
+#|---------------|---------|------------|--------------|----------------|
+#| Bubble Sort   | 10000   | 525.000    | 49995000     | 149985000    |
+#|---------------|---------|------------|--------------|----------------|
+#| Selection Sort | 10000   | 204.000    | 49995000     | 29997        |
+#|---------------|---------|------------|--------------|----------------| 
