@@ -4,6 +4,7 @@
 
 #define MAX_SIZE 10000
 
+// Funcao responsável por imprimir os elementos do vetor antes e depois da ordenacao
 void printArray(int array[], int n) {
 	int i;
 	for (i = 0; i < n; i++) {
@@ -12,6 +13,7 @@ void printArray(int array[], int n) {
 	printf("\n");
 }
  
+// Implementacao do algoritmo bubbleSort
 void bubbleSort(int arr[], int n) {
 	int i, j, temp;
 	for (i = 0; i < n-1; i++){
@@ -25,6 +27,7 @@ void bubbleSort(int arr[], int n) {
 	}
 }
 
+// Implementacao do algoritmo selectionSort
 void selectionSort(int arr[], int n) {
 	int i, j, min_idx, temp;
 	for (i = 0; i < n-1; i++){
@@ -40,6 +43,7 @@ void selectionSort(int arr[], int n) {
 	}
 }
 
+// Implementacao do algoritmo insertionSort
 void insertionSort(int arr[], int n) {
 	int i, key, j;
 	for (i = 1; i < n; i++){
@@ -54,6 +58,7 @@ void insertionSort(int arr[], int n) {
 	
 }
 
+// Funcao partition do quickSort que organiza os elementos menores que o pivô à esquerda.
 int partition(int arr[], int low, int high) {
 	int pivot = arr[high];
 	int i = low - 1;
@@ -74,6 +79,7 @@ int partition(int arr[], int low, int high) {
 	return ( i + 1);
 }
 
+// Implementação do algoritmo quickSort
 void quickSort(int arr[], int low, int high) {
 	if (low < high) {
 		int pi = partition(arr, low, high);
@@ -82,6 +88,7 @@ void quickSort(int arr[], int low, int high) {
 	}
 }
 
+// Funcao merge que junta duas partes ordenada do vetor
 void merge(int arr[], int l, int m, int r) {
 	int n1 = m - l + 1;
 	int n2 = r - m;
@@ -120,6 +127,7 @@ void merge(int arr[], int l, int m, int r) {
 	
 }
 
+// Implementacao do algoritmo mergeSort
 void mergeSort(int arr[], int l, int r) {
 	if ( l < r) {
 		int m = l + (r - l) / 2;
@@ -130,16 +138,19 @@ void mergeSort(int arr[], int l, int r) {
 	}
 }
 
+// Funcao que executa o algoritmo escolhido, mede o tempo e imprime os 10 primeiros valores antes e depois 
 void executarTeste(int opcao, int arr[], int size) {
 	int arrCopia[MAX_SIZE];
 	int i;
 	
+	// Cria uma cópia de vetor original para se ter uma comparação justa entre os algoritmos
 	for (i = 0; i < size; i++)
 		arrCopia[i] = arr[i];
 		
 	printf("Os 10 primeiros antes da ordenação:\n");
 	printArray(arrCopia, 10);
 	
+	// Início da mediação em tempo
 	clock_t inicio = clock();
 	
 	switch(opcao) {
@@ -160,6 +171,7 @@ void executarTeste(int opcao, int arr[], int size) {
 			break;
 	}
 	
+	// Fim da mediacao e o tempo em segundos
 	clock_t fim = clock();
 	double tempo = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
 	
@@ -169,14 +181,16 @@ void executarTeste(int opcao, int arr[], int size) {
 	printf("Tempo com %d elementos: %f segundos\n", size, tempo);
 }
 
+// Funcao principal, gera o vetor aleatório e exibe o menu
 int main() {
 	int arr[MAX_SIZE];
 	int i, opcao, tamanho;
 	
 	srand(time(NULL));
 	
+	// Gera numeros aleatorios para preencher o vetor
 	for(i = 0; i < MAX_SIZE; i++) 
-		arr[i] = rand() % 1000;
+		arr[i] = rand() % 10000;
 	
 	do {
 		printf("Escoha o algoritimo a ser executado:\n");
